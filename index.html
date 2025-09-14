@@ -1,25 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Entrar no Roblox</title>
-    <script>
-        // Pega o gameInstanceId da URL
-        const params = new URLSearchParams(window.location.search);
-        const gameInstanceId = params.get("gameInstanceId");
-
-        if (gameInstanceId) {
-            // Redireciona para o link do Roblox
-            // Substitua PLACE_ID pelo ID do seu jogo no Roblox
-            const PLACE_ID = "109983668079237";
-            const robloxLink = `https://www.roblox.com/games/${PLACE_ID}/?gameInstanceId=${gameInstanceId}`;
-            window.location.href = robloxLink;
-        } else {
-            document.body.innerHTML = "<h2>GameInstanceId não encontrado na URL.</h2>";
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox Joiner</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    a {
+      color: #00aaff;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h2>Redirecionando para o Roblox...</h2>
+  <h1>Roblox Joiner</h1>
+  <p id="status">Carregando...</p>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const placeId = urlParams.get('placeId');
+    const jobId = urlParams.get('gameInstanceId');
+
+    if (placeId && jobId) {
+      const finalLink = `roblox://placeId=${placeId}&gameInstanceId=${jobId}`;
+      document.getElementById('status').innerHTML = `
+        <p>Link pronto:</p>
+        <a href="${finalLink}">${finalLink}</a>
+      `;
+      window.location.href = finalLink; // Abre direto no Roblox
+    } else {
+      document.getElementById('status').innerText = "Parâmetros inválidos!";
+    }
+  </script>
 </body>
 </html>
