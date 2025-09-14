@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Entrar no Roblox</title>
+    <script>
+        // Pega o gameInstanceId da URL
+        const params = new URLSearchParams(window.location.search);
+        const gameInstanceId = params.get("gameInstanceId");
+
+        if (gameInstanceId) {
+            // Redireciona para o link do Roblox
+            // Substitua PLACE_ID pelo ID do seu jogo no Roblox
+            const PLACE_ID = "109983668079237";
+            const robloxLink = `https://www.roblox.com/games/${PLACE_ID}/?gameInstanceId=${gameInstanceId}`;
+            window.location.href = robloxLink;
+        } else {
+            document.body.innerHTML = "<h2>GameInstanceId não encontrado na URL.</h2>";
+        }
+    </script>
+</head>
+<body>
+    <h2>Redirecionando para o Roblox...</h2>
+</body>
+</html>
